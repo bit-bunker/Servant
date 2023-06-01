@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       5aa3c3b8-9aad-4c90-a074-11e701d48c34
+:END:
+#+title: servant notes
+#+date: 2023-06-01
+#+filetags: bot servant notes
+
+* Project Map
+** Commands
+*** admin
+- [ ] Channels - /Command to configure the important channels;/
+- [ ] Roles - /Command to configure the important roles;/
+- [ ] Gate - /Configure the server's gateway;/
+- [ ] System - /Configure server systems;/
+*** moderation
+- [X] Clear;
+- [ ] Ban;
+- [ ] Kick;
+- [ ] Timeout;
+- [ ] Mute;
+*** geral
+- [ ] User - /Show all user information;/
+- [ ] Rank - /Show the server ranking;/
+- [ ] Support - /Commands for the server forum;/
+- [ ] Reminder - /Create a timed reminder;/
+- [ ] Server - /Show all server information;/
+- [ ] Reputation - /Member reputation system;/
+** Events
+- [ ] Monitor boosts;
+- [ ] Monitor forum;
+- [ ] Monitor spamm/Flood;
+- [ ] Monitor links;
+- [X] Read interactions;
+- [ ] Logs;
+- [ ] Gate;

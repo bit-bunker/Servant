@@ -1,0 +1,35 @@
+{
+  "author": "zDragonSK",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:changelog": "npx @discordx/changelog --src src",
+    "dev": "ts-node-esm src/index.ts",
+    "start": "node build/index.js",
+    "build:start": "npm run build && npm run start",
+    "clear": "rm -rf build",
+    "watch": "nodemon --exec ts-node-esm src/index.ts"
+  },
+  "dependencies": {
+    "@discordx/importer": "^1.1.10",
+    "@discordx/pagination": "^3.4.0",
+    "@discordx/utilities": "^5.2.1",
+    "discord.js": "^14.7.1",
+    "discordx": "^11.7.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.4",
+    "ts-node": "^10.9.1",
+    "typescript": "4.9.5"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}

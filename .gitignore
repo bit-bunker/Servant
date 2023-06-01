@@ -1,0 +1,9 @@
+# directorys
+node_modules
+build
+
+# files
+*.backup
+*.dev
+*.zsk
+.env
