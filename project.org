@@ -5,6 +5,8 @@
 #+date: 2023-06-01
 #+filetags: bot servant notes
 
+/This file was created to be used with Org-Roam and Org-Mode in Emacs. GitHub preview as markup will always look bad./
+
 * Project Map
 ** Commands
 *** admin
