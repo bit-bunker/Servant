@@ -1,0 +1,22 @@
+{
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "decorators": true,
+            "dynamicImport": true
+        },
+        "target": "esnext",
+        "baseUrl": "./",
+        "transform": {
+            "decoratorMetadata": true
+        }
+    },
+    "exclude": [
+        "node_modules",
+        ".git"
+    ],
+    "module": {
+        "type": "commonjs"
+    }
+}
