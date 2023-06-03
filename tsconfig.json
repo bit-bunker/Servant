@@ -6,7 +6,7 @@
     "sourceMap": true,
     "strict": true,
     "outDir": "build",
-    "emitDecoratorMetadata": false, // required
+    "emitDecoratorMetadata": true,  // required
     "experimentalDecorators": true, // required
     "declaration": false,
     "importHelpers": true, // required

@@ -1,0 +1,5 @@
+root = true
+
+[*.{js,ts}]
+charset = utf-8
+indent_size = 4
