@@ -1,9 +1,9 @@
 import { Client, Discord, Slash, SlashOption } from 'discordx';
 import { Category } from '@discordx/utilities';
-import { ApplicationCommandOptionType, CommandInteraction, User, Embed, EmbedBuilder } from 'discord.js';
+import { ApplicationCommandOptionType, CommandInteraction, User, EmbedBuilder } from 'discord.js';
 
 @Discord()
-@Category('info')
+@Category('geral')
 export class avatar {
     @Slash({
         name: 'avatar',
