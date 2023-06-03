@@ -1,8 +1,4 @@
 {
-  "author": "zDragonSK",
-  "private": true,
-  "license": "MIT",
-  "main": "build/index.js",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
