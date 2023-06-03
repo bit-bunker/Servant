@@ -1,9 +1,9 @@
 import { Client, Discord, Slash } from 'discordx';
 import { Category } from '@discordx/utilities';
-import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder } from 'discord.js';
+import { CommandInteraction, EmbedBuilder } from 'discord.js';
 
 @Discord()
-@Category('serverinfo')
+@Category('geral')
 export class serverinfo {
   @Slash({
     name: 'serverinfo',
