@@ -1,9 +1,9 @@
 import { Client, Discord, Slash } from 'discordx';
 import { Category } from '@discordx/utilities';
-import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder } from 'discord.js';
+import { CommandInteraction, EmbedBuilder } from 'discord.js';
 
 @Discord()
-@Category('serverinfo')
+@Category('geral')
 export class serverinfo {
     @Slash({
         name: 'serverinfo',
@@ -17,7 +17,7 @@ export class serverinfo {
             .setFields(
                 {
                     name: '<:moderator:957490077964066837> Owner',
-                    value: `${interaction.guild?.members.cache.get(interaction.guild?.ownerId)}`,
+                    value: `<@${interaction.guild?.ownerId}>`,
                     inline: true
                 },
                 {
