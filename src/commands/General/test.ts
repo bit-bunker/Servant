@@ -3,7 +3,7 @@ import { Category } from '@discordx/utilities';
 import { CommandInteraction } from 'discord.js';
 
 @Discord()
-@Category('info')
+@Category('General')
 export class testCmd {
     @Slash({
         name: 'test',
