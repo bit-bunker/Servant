@@ -7,3 +7,4 @@ build
 *.dev
 *.zsk
 .env
+package-lock.json
