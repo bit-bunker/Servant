@@ -19,7 +19,7 @@ export class serverinfo {
         .setFields(
           {
             name: '<:moderator:957490077964066837> Owner',
-            value: `${interaction.guild?.members.cache.get(interaction.guild?.ownerId)}`,
+            value: `<@${interaction.guild?.ownerId}>`,
             inline: true
           },
           {
