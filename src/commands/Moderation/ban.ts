@@ -1,12 +1,6 @@
 import { Discord, Guard, Slash, SlashOption, Client } from 'discordx';
 import { Category, PermissionGuard } from '@discordx/utilities';
-import {
-    ApplicationCommandOptionType,
-    CommandInteraction,
-    DiscordAPIError,
-    GuildMember,
-    GuildMemberRoleManager
-} from 'discord.js';
+import { ApplicationCommandOptionType, CommandInteraction, DiscordAPIError, GuildMember, GuildMemberRoleManager } from 'discord.js';
 import { memberIdsFromString } from '../../utils/members';
 
 @Discord()
@@ -52,12 +46,9 @@ export default class BanCommand {
             if (roles instanceof GuildMemberRoleManager) {
                 const membersHighestRole = guildMembers.map((member) => member.roles.highest);
                 const botMember = await guild.members.fetch(client.botId);
-                canBanAllMembers = membersHighestRole.every(
-                    (role) => botMember.roles.highest.comparePositionTo(role) > 0
-                );
-                if (canBanAllMembers)
-                    canBanAllMembers = membersHighestRole.every((role) => roles.highest.comparePositionTo(role) > 0);
-            }
+                canBanAllMembers = membersHighestRole.every((role) => botMember.roles.highest.comparePositionTo(role) > 0);
+                if (canBanAllMembers) canBanAllMembers = membersHighestRole.every((role) => roles.highest.comparePositionTo(role) > 0);
+           }
         }
 
         if (canBanAllMembers) {
@@ -67,13 +58,13 @@ export default class BanCommand {
                     content: `${interaction.member} banned **${guildMembers.size}** members banned with success!`
                 });
             } catch (e) {
-                const errorMessage = typeof e === 'string' ? e : e instanceof DiscordAPIError ? e.message : '';
+                const errorMessage = (typeof e === 'string') ? e : (e instanceof DiscordAPIError) ? e.message : '';
 
                 await interaction.reply({
                     content: `Failed to ban members. Reason: ${errorMessage}`,
                     ephemeral: true
                 });
             }
-        }
-    }
+       }
+   }
 }
