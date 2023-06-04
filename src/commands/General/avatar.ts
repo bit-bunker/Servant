@@ -3,7 +3,7 @@ import { Category } from '@discordx/utilities';
 import { ApplicationCommandOptionType, CommandInteraction, User, EmbedBuilder } from 'discord.js';
 
 @Discord()
-@Category('geral')
+@Category('General')
 export class avatar {
     @Slash({
         name: 'avatar',
