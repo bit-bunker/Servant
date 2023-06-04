@@ -30,6 +30,7 @@ export class kickCmd {
     ) {
         const user = interaction.guild?.members.cache.get(member.id);
         if (!user) return interaction.reply('The member appears to no longer be on the server now.');
+        if (member.id == interaction.member.user.id) return interaction.reply('You cannot punish yourself!');
         if (!user.bannable) return interaction.reply('That member cannot be punished by me.');
         user.kick(`Kicked by ${interaction.member?.user.username}`);
         const embed = new EmbedBuilder()
