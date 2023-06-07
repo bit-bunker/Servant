@@ -36,7 +36,10 @@ export class kickCmd {
 
         member.kick(`Kicked by ${interaction.member?.user.username}`);
 
-        const avatarUrl = member.avatarURL() ?? member.user.avatarURL() ?? `https://cdn.discordapp.com/embed/avatars/${parseInt(member.user.discriminator) % 5}.png`;
+        const avatarUrl =
+            member.avatarURL() ??
+            member.user.avatarURL() ??
+            `https://cdn.discordapp.com/embed/avatars/${parseInt(member.user.discriminator) % 5}.png`;
 
         const embed = new EmbedBuilder()
             .setTitle('Kick')
