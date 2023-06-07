@@ -8,6 +8,11 @@ import { GatewayIntentBits } from 'discord.js';
 import { Client, DIService, tsyringeDependencyRegistryEngine } from 'discordx';
 import { importx, dirname } from '@discordx/importer';
 import { container } from 'tsyringe';
+import { PrismaClient } from '@prisma/client';
+
+container.register<PrismaClient>('PrismaClient', {
+    useValue: new PrismaClient()
+});
 
 DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 
