@@ -1,4 +1,4 @@
-import { Client, Discord, Slash, SlashOption } from 'discordx';
+import { Discord, Slash, SlashOption } from 'discordx';
 import { Category } from '@discordx/utilities';
 import { ApplicationCommandOptionType, CommandInteraction, User, EmbedBuilder } from 'discord.js';
 
@@ -16,14 +16,14 @@ export class avatar {
             type: ApplicationCommandOptionType.User,
             required: true
         })
-        member: User,
-        interaction: CommandInteraction,
-        client: Client
+        user: User,
+        interaction: CommandInteraction
     ) {
-        const user = interaction.guild?.members.cache.get(member.id);
-        const avatar = user?.user.avatarURL({ size: 1024 });
+        const member = await interaction.guild?.members.fetch({ user });
+        if (!member) return;
+        const avatar = member.displayAvatarURL({ size: 1024 });
         const embed = new EmbedBuilder()
-            .setTitle(`${user?.user.username}'s Avatar`)
+            .setTitle(`${member.user.username}'s Avatar`)
             .setImage(`${avatar}`)
             .setColor('#2f3136')
             .setTimestamp();

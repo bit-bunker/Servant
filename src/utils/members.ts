@@ -2,7 +2,11 @@ const userMentionRegExp = new RegExp('<@!*([0-9]+)>');
 const snowflakeRegExp = new RegExp('([0-9]+)');
 
 export function memberIdsFromString(members: string): string[] {
-    return members.split(' ').filter((member: string) =>
-        userMentionRegExp.exec(member)?.at(1) ?? snowflakeRegExp.exec(member)?.at(1)
-    );
+    return members.split(' ').flatMap((member: string) => {
+        const mentionMatch = userMentionRegExp.exec(member);
+        if (mentionMatch) return [mentionMatch[1]];
+        const snowflakeMatch = snowflakeRegExp.exec(member);
+        if (snowflakeMatch) return [snowflakeMatch[1]];
+        return [];
+    });
 }
