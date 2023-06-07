@@ -1,8 +1,9 @@
-import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder, GuildMember } from 'discord.js';
+import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder, User } from 'discord.js';
 import { Discord, Slash, SlashOption, Guard } from 'discordx';
-import { PermissionGuard } from '@discordx/utilities';
+import { Category, PermissionGuard } from '@discordx/utilities';
 
 @Discord()
+@Category('Moderation')
 export class kickCmd {
     @Slash({ name: 'kick', description: 'Kick a member' })
     @Guard(
@@ -11,14 +12,14 @@ export class kickCmd {
             ephemeral: true
         })
     )
-    kick(
+    async kick(
         @SlashOption({
             name: 'member',
             description: 'member to ban',
             required: true,
             type: ApplicationCommandOptionType.User
         })
-        member: GuildMember,
+        user: User,
         @SlashOption({
             name: 'reason',
             description: 'reason for ban',
@@ -28,17 +29,19 @@ export class kickCmd {
         reason: string,
         interaction: CommandInteraction
     ) {
-        const user = interaction.guild?.members.cache.get(member.id);
-        if (!user) return interaction.reply('The member appears to no longer be on the server now.');
-        if (member.id == interaction.member.user.id) return interaction.reply('You cannot punish yourself!');
-        if (!user.bannable) return interaction.reply('That member cannot be punished by me.');
+        const member = await interaction.guild?.members.fetch({ user: user });
+        if (!member) return interaction.reply('The member appears to no longer be on the server now.');
+        if (member.id == interaction.member?.user.id) return interaction.reply('You cannot punish yourself!');
+        if (!member.bannable) return interaction.reply('That member cannot be punished by me.');
 
-        user.kick(`Kicked by ${interaction.member?.user.username}`);
+        member.kick(`Kicked by ${interaction.member?.user.username}`);
+
+        const avatarUrl = member.avatarURL() ?? member.user.avatarURL() ?? `https://cdn.discordapp.com/embed/avatars/${parseInt(member.user.discriminator) % 5}.png`;
 
         const embed = new EmbedBuilder()
             .setTitle('Kick')
             .setTimestamp()
-            .setThumbnail(`${user.user.avatarURL()}`)
+            .setThumbnail(`${avatarUrl}`)
             .setFields(
                 {
                     name: 'Author',
