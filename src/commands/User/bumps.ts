@@ -5,7 +5,7 @@ import { container } from 'tsyringe';
 import { PrismaClient } from '@prisma/client';
 
 @Discord()
-@Category()
+@Category('User')
 export default abstract class BumpCountCommand {
     @Slash({
         name: 'bumps',
