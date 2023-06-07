@@ -6,7 +6,7 @@
     "sourceMap": true,
     "strict": true,
     "outDir": "build",
-    "emitDecoratorMetadata": true,  // required
+    "emitDecoratorMetadata": true, // required
     "experimentalDecorators": true, // required
     "declaration": false,
     "importHelpers": true, // required
@@ -14,5 +14,8 @@
     "moduleResolution": "Node", // required
     "esModuleInterop": true // required
   },
-  "exclude": ["node_modules", "build"]
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }
