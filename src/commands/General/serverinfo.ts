@@ -1,4 +1,4 @@
-import { Client, Discord, Slash } from 'discordx';
+import { Discord, Slash } from 'discordx';
 import { Category } from '@discordx/utilities';
 import { CommandInteraction, EmbedBuilder } from 'discord.js';
 
@@ -9,7 +9,7 @@ export class serverinfo {
         name: 'serverinfo',
         description: 'View server information.'
     })
-    async serverinfo(interaction: CommandInteraction, client: Client) {
+    async serverinfo(interaction: CommandInteraction) {
         const embed = new EmbedBuilder()
             .setTitle(`${interaction.guild?.name}`)
             .setThumbnail(`${interaction.guild?.iconURL()}`)
