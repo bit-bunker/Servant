@@ -1,4 +1,10 @@
-import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder, User } from 'discord.js';
+import {
+    ApplicationCommandOptionType,
+    CommandInteraction,
+    EmbedBuilder,
+    GuildMemberRoleManager,
+    User
+} from 'discord.js';
 import { Discord, Slash, SlashOption, Guard } from 'discordx';
 import { Category, PermissionGuard } from '@discordx/utilities';
 
@@ -15,14 +21,14 @@ export class kickCmd {
     async kick(
         @SlashOption({
             name: 'member',
-            description: 'member to ban',
+            description: 'member to kick',
             required: true,
             type: ApplicationCommandOptionType.User
         })
         user: User,
         @SlashOption({
             name: 'reason',
-            description: 'reason for ban',
+            description: 'reason for kick',
             required: false,
             type: ApplicationCommandOptionType.String
         })
@@ -33,6 +39,15 @@ export class kickCmd {
         if (!member) return interaction.reply('The member appears to no longer be on the server now.');
         if (member.id == interaction.member?.user.id) return interaction.reply('You cannot punish yourself!');
         if (!member.bannable) return interaction.reply('That member cannot be punished by me.');
+
+        const roles = interaction.member?.roles;
+        if (!(roles instanceof GuildMemberRoleManager)) return;
+
+        if (
+            interaction.member?.user.id !== interaction.guild?.ownerId ||
+            roles.highest.comparePositionTo(member.roles.highest) < 1
+        )
+            return interaction.reply('You cannot punish this member.');
 
         member.kick(`Kicked by ${interaction.member?.user.username}`);
 
