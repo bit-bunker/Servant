@@ -23,13 +23,15 @@ export class userinfo {
         if (!member) return;
         const avatar = member.displayAvatarURL({ size: 1024 });
 
+        const userTag = member.user.discriminator === '0' ? member.user.username : member.user.tag;
+
         const embed = new EmbedBuilder()
             .setTitle(`${member.user.username}'s informations`)
             .setThumbnail(`${avatar}`)
             .setFields(
                 {
                     name: '<:Info:953897898481954827> Tag',
-                    value: `\`${member.user.tag}\``,
+                    value: `\`${userTag}\``,
                     inline: true
                 },
                 {
