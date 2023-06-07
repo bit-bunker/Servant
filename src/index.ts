@@ -2,10 +2,14 @@
   The Servant ~
     BitBunker - Official bot
 */
+import 'reflect-metadata';
 import 'dotenv/config';
 import { GatewayIntentBits } from 'discord.js';
-import { Client } from 'discordx';
+import { Client, DIService, tsyringeDependencyRegistryEngine } from 'discordx';
 import { importx, dirname } from '@discordx/importer';
+import { container } from 'tsyringe';
+
+DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 
 /* Build the Client */
 const client = new Client({
