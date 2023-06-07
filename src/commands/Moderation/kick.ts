@@ -29,17 +29,14 @@ export class kickCmd {
         reason: string,
         interaction: CommandInteraction
     ) {
-        const member = await interaction.guild?.members.fetch({ user: user });
+        const member = await interaction.guild?.members.fetch({ user });
         if (!member) return interaction.reply('The member appears to no longer be on the server now.');
         if (member.id == interaction.member?.user.id) return interaction.reply('You cannot punish yourself!');
         if (!member.bannable) return interaction.reply('That member cannot be punished by me.');
 
         member.kick(`Kicked by ${interaction.member?.user.username}`);
 
-        const avatarUrl =
-            member.avatarURL() ??
-            member.user.avatarURL() ??
-            `https://cdn.discordapp.com/embed/avatars/${parseInt(member.user.discriminator) % 5}.png`;
+        const avatarUrl = member.displayAvatarURL({ size: 1024 });
 
         const embed = new EmbedBuilder()
             .setTitle('Kick')
