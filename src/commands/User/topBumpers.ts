@@ -8,8 +8,8 @@ import { PrismaClient } from '@prisma/client';
 @Category('User commands')
 export default abstract class TopBumpsCommand {
     @Slash({
-        name: 'topbumps',
-        description: "Show server's top bumps"
+        name: 'topbumpers',
+        description: "Show server's top bumpers"
     })
     async topBumps(interaction: CommandInteraction) {
         const prisma: PrismaClient = container.resolve('PrismaClient');
