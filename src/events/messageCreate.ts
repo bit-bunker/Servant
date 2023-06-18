@@ -28,6 +28,8 @@ export default class MessageCreateEvent {
                         id: bumper.id
                     }
                 });
+
+                message.react('❤️');
             }
         }
     }

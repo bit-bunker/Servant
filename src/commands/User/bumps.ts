@@ -5,7 +5,7 @@ import { container } from 'tsyringe';
 import { PrismaClient } from '@prisma/client';
 
 @Discord()
-@Category()
+@Category('User commands')
 export default abstract class BumpCountCommand {
     @Slash({
         name: 'bumps',
@@ -21,20 +21,16 @@ export default abstract class BumpCountCommand {
         user: User | APIUser | undefined,
         interaction: CommandInteraction
     ) {
-        if (!user) {
-            user = interaction.member?.user;
-        }
+        user ??= interaction.member?.user;
 
         const guild = interaction.guild;
         if (!guild) return;
 
         const prisma: PrismaClient = container.resolve('PrismaClient');
 
-        let userData = await prisma.users.findFirst({ where: { id: user.id } });
+        let userData = await prisma.users.findFirst({ where: { id: user!.id } });
 
-        if (!userData) {
-            userData = await prisma.users.create({ data: { id: user.id } });
-        }
+        if (!userData) userData = await prisma.users.create({ data: { id: user!.id } });
 
         await interaction.reply({ content: `<@${userData.id}> has **${userData.bumpCount}** bumps!`, ephemeral: true });
     }

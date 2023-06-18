@@ -25,7 +25,8 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildModeration
     ],
-    silent: false
+    silent: false,
+    botGuilds: process.env.guilds?.split(',')
 });
 
 async function main() {
