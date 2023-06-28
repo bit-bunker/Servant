@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for servant on 2023-06-27T02:44:08-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "servant"
+primary_region = "gru"
+
+[env]
+  FIBO_BOT_ID = "735147814878969968"
+  guilds = "1090364250335228104"
+
+[[mounts]]
+  source = "data"
+  destination = "/data"
+
+# [http_service]
+#   internal_port = 3000
+#   force_https = true
+#   auto_stop_machines = true
+#   auto_start_machines = true
+#   min_machines_running = 0
+#   processes = ["app"]
