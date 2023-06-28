@@ -1,0 +1,13 @@
+# directorys
+node_modules
+build
+
+# files
+*.backup
+*.dev
+*.zsk
+.env
+package-lock.json
+
+# SQLite database
+prisma/dev.db
