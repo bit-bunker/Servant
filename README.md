@@ -13,9 +13,13 @@
 - Install dependencies with your favourite node package manager (e.g: `pnpm install`)
 - Configure .env file, example:
 ```sh
-token=[TOKEN]
-guilds=[YOUR GUILD ID]
-FIBO_BOT_ID=[GET BOT ID]
+token="TOKEN"
+DISCORD_GUILD_ID="YOUR GUILD ID"
+FIBO_BOT_ID="GET BUMP REMINDER BOT ID"
+WELCOME_CHANNEL_ID="YOUR WELCOME CHANNEL ID"
+RULES_CHANNEL_ID="YOUR RULES CHANNEL ID"
+NEWS_CHANNEL_ID="YOUR NEWS CHANNEL ID"
+INTRO_CHANNEL_ID="YOUR INTRO CHANNEL ID"
 DATABASE_URL=file:/tmp/db.db
 ```
 - Migrate the database using `npx prisma migrate dev`

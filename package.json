@@ -10,7 +10,8 @@
     "build:clean": "rimraf build/",
     "watch": "concurrently \"npm run watch:compile\" \"npm run watch:start\"",
     "watch:compile": "swc src -w -d build -D",
-    "watch:start": "nodemon --watch \"build/**/*\" -e js ./build/index.js"
+    "watch:start": "nodemon --watch \"build/**/*\" -e js ./build/index.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@discordx/importer": "^1.1.10",
@@ -36,6 +37,7 @@
     "cross-env": "^7.0.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "jest": "^29.5.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
