@@ -3,12 +3,13 @@ import { ArgsOf, Discord, On } from 'discordx';
 import { container } from 'tsyringe';
 
 const FIBO_BOT_ID = process.env.FIBO_BOT_ID;
+const GUILD_ID = process.env.DISCORD_GUILD_ID || '';
 
 @Discord()
 export default class MessageCreateEvent {
     @On({ event: 'messageCreate' })
     async onMessageCreate([message]: ArgsOf<'messageCreate'>) {
-        if (message.author.id === FIBO_BOT_ID) {
+        if (message.author.id === FIBO_BOT_ID && message.guildId === GUILD_ID) {
             if (message.content.startsWith('Thx for bumping our Server! We will remind you in 2 hours!')) {
                 const bumper = message.mentions.members?.first();
                 if (!bumper) return;

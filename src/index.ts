@@ -16,6 +16,8 @@ container.register<PrismaClient>('PrismaClient', {
 
 DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 
+const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID;
+
 /* Build the Client */
 const client = new Client({
     intents: [
@@ -26,7 +28,7 @@ const client = new Client({
         GatewayIntentBits.GuildModeration
     ],
     silent: false,
-    botGuilds: process.env.guilds?.split(',')
+    botGuilds: DISCORD_GUILD_ID ? [DISCORD_GUILD_ID] : []
 });
 
 async function main() {
