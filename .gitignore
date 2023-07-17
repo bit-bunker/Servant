@@ -8,6 +8,7 @@ build
 *.zsk
 .env
 package-lock.json
+insertdb.ts 
 
 # SQLite database
 prisma/dev.db

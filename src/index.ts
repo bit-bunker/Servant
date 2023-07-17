@@ -18,7 +18,6 @@ DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 
 const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID;
 
-/* Build the Client */
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
