@@ -14,4 +14,5 @@ model Users {
   id        String @id @default(cuid())
   bumpCount Int    @default(0)
   balance   Int    @default(0)
+  top       Boolean @default(false)
 }

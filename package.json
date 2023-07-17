@@ -18,9 +18,11 @@
     "@discordx/pagination": "^3.4.0",
     "@discordx/utilities": "^5.2.1",
     "@prisma/client": "4.15.0",
+    "@types/node-cron": "^3.0.8",
     "discord.js": "^14.7.1",
     "discordx": "^11.7.0",
     "dotenv": "^16.0.3",
+    "node-cron": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0"
   },
