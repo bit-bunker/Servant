@@ -11,13 +11,14 @@ datasource db {
 }
 
 model Users {
-  id        String @id @default(cuid())
-  bumpCount Int    @default(0)
-  balance   Int    @default(0)
+  id          String  @id @default(cuid())
+  bumpCount   Int     @default(0)
+  balance     Int     @default(0)
+  infractions Int     @default(0)
 }
 
-model Punishments {
-  infractions Int @id
+model Infractions {
+  points      Int @id
   punishment  Int @default(0)
   duration    BigInt @default(0)
 }
