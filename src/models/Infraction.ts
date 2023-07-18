@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import { inject, singleton } from "tsyringe";
+import { PrismaClient } from '@prisma/client';
+import { inject, singleton } from 'tsyringe';
 
 export enum Punishment {
     WARNING,
@@ -9,7 +9,7 @@ export enum Punishment {
 
 @singleton()
 export class Infraction {
-    constructor(@inject('PrismaClient') private prismaClient: PrismaClient) { }
+    constructor(@inject('PrismaClient') private prismaClient: PrismaClient) {}
 
     add({ points, punishment, duration }: { points: number; punishment: Punishment; duration: number }) {
         return this.prismaClient.infractions.create({ data: { points, punishment, duration } });
@@ -19,10 +19,10 @@ export class Infraction {
         return this.prismaClient.infractions.delete({ where: { points } });
     }
 
-    update({ points, punishment, duration }: { points: number; punishment: Punishment; duration: number }) {
+    update(data: { points: number; punishment: Punishment; duration: number }) {
         return this.prismaClient.infractions.update({
-            where: { points },
-            data: { punishment, duration },
+            where: { points: data.points },
+            data
         });
     }
 
