@@ -2,9 +2,11 @@ import { delay, inject, singleton } from 'tsyringe';
 import { Infraction, Punishment as PunishmentEnum } from '../models/Infraction';
 import { User } from '../models/User';
 import { Client } from 'discordx';
-import { Guild } from 'discord.js';
+import { EmbedBuilder, Guild } from 'discord.js';
 import { Punishment } from '../models/Punishment';
 import { Banishment } from '../models/Banishment';
+
+const punishmentText = ['warn', 'mute', 'ban'];
 
 export enum Severity {
     LOW,
@@ -83,12 +85,32 @@ export class Infractions {
 
         if (!punished) return;
 
-        return this.punishmentModel.add({
+
+        const punishmentData = await this.punishmentModel.add({
             user: userId,
             punishment,
             duration,
             reason
         });
+
+        const modlogsChannel = await guild.channels.fetch(process.env.MODLOGS_CHANNEL_ID || "");
+
+        if (modlogsChannel) {
+            if (modlogsChannel.isTextBased()) {
+                const embed = new EmbedBuilder().addFields(
+                    { name: 'ID', value: `${punishmentData.case}` },
+                    { name: 'Target', value: `<@${punishmentData.user}>` },
+                    { name: 'Punishment', value: `${punishmentText[punishmentData.punishment]}` },
+                    { name: 'Reason', value: `${punishmentData.reason}` },
+                    { name: 'Date', value: `<t:${Math.floor(punishmentData.when.getTime() / 1000)}:F>` },
+                );
+                await modlogsChannel.send({
+                    embeds: [embed]
+                });
+            }
+        }
+
+        return punishmentData;
     }
 
     async timeoutPunish({
