@@ -36,6 +36,18 @@ export default class PardonCommand {
     ) {
         const userModel = container.resolve(UserModel);
 
+        const existingUser = await userModel.find({ id: user.id });
+
+        if (!existingUser) return interaction.reply({
+            content: "User doesn't exist in database",
+            ephemeral: true
+        });
+
+        if (amount > existingUser.infractions) return interaction.reply({
+            content: "Can't pardon more points than the user has",
+            ephemeral: true
+        });
+
         if (await userModel.update(user.id, { infractions: { decrement: amount } })) {
             return interaction.reply({
                 content: `${interaction.member}, pardoned \`${amount}\` infraction points of ${user}`
