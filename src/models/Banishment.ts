@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
-import { inject, singleton } from "tsyringe";
+import { PrismaClient } from '@prisma/client';
+import { inject, singleton } from 'tsyringe';
 
 @singleton()
 export class Banishment {
     constructor(@inject('PrismaClient') private prismaClient: PrismaClient) {}
 
-    add(data: { user: string, until: Date }) {
+    add(data: { user: string; until: Date }) {
         return this.prismaClient.banishments.create({ data });
     }
 

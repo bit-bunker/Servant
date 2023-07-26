@@ -1,8 +1,8 @@
-import { Category, PermissionGuard } from "@discordx/utilities";
-import { ApplicationCommandOptionType, CommandInteraction, User } from "discord.js";
-import { Discord, Guard, Slash, SlashOption } from "discordx";
-import { container } from "tsyringe";
-import { User as UserModel } from "../../models/User";
+import { Category, PermissionGuard } from '@discordx/utilities';
+import { ApplicationCommandOptionType, CommandInteraction, User } from 'discord.js';
+import { Discord, Guard, Slash, SlashOption } from 'discordx';
+import { container } from 'tsyringe';
+import { User as UserModel } from '../../models/User';
 
 @Discord()
 @Category('Moderation')
@@ -43,7 +43,7 @@ export default class PardonCommand {
         }
 
         return interaction.reply({
-            content: "Failed to pardon infraction points of specified user",
+            content: 'Failed to pardon infraction points of specified user',
             ephemeral: true
         });
     }

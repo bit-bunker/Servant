@@ -18,7 +18,7 @@ export default class ReadyEvent {
         console.debug(banishments);
 
         if (banishments) {
-            const guild = await client.guilds.fetch(process.env.GUILD_ID || "");
+            const guild = await client.guilds.fetch(process.env.GUILD_ID || '');
             if (!guild) return;
 
             const infractionsService = container.resolve(Infractions);
