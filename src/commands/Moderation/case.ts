@@ -1,8 +1,8 @@
-import { Category, PermissionGuard } from "@discordx/utilities";
-import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder } from "discord.js";
-import { Discord, Guard, Slash, SlashOption } from "discordx";
-import { container } from "tsyringe";
-import { Punishment } from "../../models/Punishment";
+import { Category, PermissionGuard } from '@discordx/utilities';
+import { ApplicationCommandOptionType, CommandInteraction, EmbedBuilder } from 'discord.js';
+import { Discord, Guard, Slash, SlashOption } from 'discordx';
+import { container } from 'tsyringe';
+import { Punishment } from '../../models/Punishment';
 
 const punishmentText = ['warn', 'mute', 'ban'];
 
@@ -39,15 +39,14 @@ export default class CaseCommand {
             });
         }
 
-        const embed = new EmbedBuilder()
-            .addFields(
-                { name: 'ID', value: `${data.case}` },
-                { name: 'Target', value: `<@${data.user}>` },
-                { name: 'Punishment', value: `${punishmentText[data.punishment]}` },
-                { name: 'Duration', value: `${data.duration}` },
-                { name: 'Reason', value: `${data.reason}` },
-                { name: 'Date', value: `<t:${Math.floor(data.when.getTime() / 1000)}:F>` }
-            );
+        const embed = new EmbedBuilder().addFields(
+            { name: 'ID', value: `${data.case}` },
+            { name: 'Target', value: `<@${data.user}>` },
+            { name: 'Punishment', value: `${punishmentText[data.punishment]}` },
+            { name: 'Duration', value: `${data.duration}` },
+            { name: 'Reason', value: `${data.reason}` },
+            { name: 'Date', value: `<t:${Math.floor(data.when.getTime() / 1000)}:F>` }
+        );
 
         return interaction.reply({
             embeds: [embed]

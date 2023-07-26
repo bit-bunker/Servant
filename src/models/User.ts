@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import { inject, singleton } from "tsyringe";
+import { PrismaClient } from '@prisma/client';
+import { inject, singleton } from 'tsyringe';
 
 @singleton()
 export class User {

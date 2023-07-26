@@ -31,3 +31,8 @@ model Punishments {
   duration    BigInt
   when        DateTime  @default(now())
 }
+
+model Banishments {
+  user  String    @id
+  until DateTime
+}

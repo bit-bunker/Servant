@@ -1,8 +1,8 @@
-import { Category, PermissionGuard } from "@discordx/utilities";
-import { ApplicationCommandOptionType, CommandInteraction, User } from "discord.js";
-import { Discord, Guard, Slash, SlashChoice, SlashOption } from "discordx";
-import { Infractions, Severity } from "../../services/Infractions";
-import { container } from "tsyringe";
+import { Category, PermissionGuard } from '@discordx/utilities';
+import { ApplicationCommandOptionType, CommandInteraction, User } from 'discord.js';
+import { Discord, Guard, Slash, SlashChoice, SlashOption } from 'discordx';
+import { Infractions, Severity } from '../../services/Infractions';
+import { container } from 'tsyringe';
 
 @Discord()
 @Category('Moderation')
