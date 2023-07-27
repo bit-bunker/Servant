@@ -1,9 +1,15 @@
 import { Client, Discord, Once, ArgsOf } from 'discordx';
 import { ActivityType } from 'discord.js';
+<<<<<<< HEAD
 import { PrismaClient } from '@prisma/client';
 import { container } from 'tsyringe';
 import cron from 'node-cron';
 import 'dotenv/config';
+=======
+import { container } from 'tsyringe';
+import { Banishment } from '../models/Banishment';
+import { Infractions } from '../services/Infractions';
+>>>>>>> main
 
 @Discord()
 export default class ReadyEvent {
@@ -32,5 +38,26 @@ export default class ReadyEvent {
         });
         client.user?.setActivity({ name: `Java no lixo`, type: ActivityType.Playing });
         console.log(`${client.user?.tag} is ready!`);
+
+        const banishmentModel = container.resolve(Banishment);
+        const banishments = await banishmentModel.all();
+
+        console.debug(banishments);
+
+        if (banishments) {
+            const guild = await client.guilds.fetch(process.env.DISCORD_GUILD_ID || '');
+            if (!guild) return;
+
+            const infractionsService = container.resolve(Infractions);
+
+            banishments.forEach(async (banishment) => {
+                const difference = Date.now() - banishment.until.getTime();
+                if (difference <= 0) {
+                    await infractionsService.unbanTask(banishment.user, guild);
+                } else {
+                    setTimeout(async () => infractionsService.unbanTask(banishment.user, guild), difference);
+                }
+            });
+        }
     }
 }

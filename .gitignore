@@ -12,3 +12,5 @@ insertdb.ts
 
 # SQLite database
 prisma/dev.db
+
+.direnv/

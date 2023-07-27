@@ -11,8 +11,35 @@ datasource db {
 }
 
 model Users {
+<<<<<<< HEAD
   id        String @id @default(cuid())
   bumpCount Int    @default(0)
   balance   Int    @default(0)
   top       Boolean @default(false)
+=======
+  id          String  @id
+  bumpCount   Int     @default(0)
+  balance     Int     @default(0)
+  infractions Int     @default(0)
+}
+
+model Infractions {
+  points      Int     @id @unique
+  punishment  Int     @default(0)
+  duration    BigInt  @default(0)
+}
+
+model Punishments {
+  case        Int       @id @default(autoincrement())
+  user        String
+  reason      String
+  punishment  Int
+  duration    BigInt
+  when        DateTime  @default(now())
+}
+
+model Banishments {
+  user  String    @id
+  until DateTime
+>>>>>>> main
 }
