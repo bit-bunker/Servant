@@ -30,7 +30,7 @@ RUN pnpm install --frozen-lockfile --prod=false
 # Generate Prisma Client
 COPY --link prisma .
 RUN npx prisma generate
-RUN npx prisma migrate deploy
+#RUN npx prisma migrate deploy
 
 # Copy application code
 COPY --link . .
