@@ -1,15 +1,13 @@
 import { Client, Discord, Once, ArgsOf } from 'discordx';
 import { ActivityType } from 'discord.js';
-<<<<<<< HEAD
 import { PrismaClient } from '@prisma/client';
 import { container } from 'tsyringe';
 import cron from 'node-cron';
 import 'dotenv/config';
-=======
-import { container } from 'tsyringe';
+
 import { Banishment } from '../models/Banishment';
 import { Infractions } from '../services/Infractions';
->>>>>>> main
+
 
 @Discord()
 export default class ReadyEvent {
