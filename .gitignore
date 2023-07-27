@@ -11,3 +11,5 @@ package-lock.json
 
 # SQLite database
 prisma/dev.db
+
+.direnv/
